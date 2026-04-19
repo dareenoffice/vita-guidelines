@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ckb">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>ڤێتا - ڕێنماییەکانی بەکارهێنان و پاراستن</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #fefaf5;
+            font-family: 'Segoe UI', 'Tahoma', 'Noto Sans Arabic', 'Noto Sans Kurdish', system-ui, -apple-system, sans-serif;
+            padding: 2rem 1rem;
+            color: #1e2a2e;
+        }
+
+        /* card main */
+        .vita-card {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05), 0 8px 20px rgba(0, 0, 0, 0.03);
+            overflow: hidden;
+            transition: all 0.2s ease;
+        }
+
+        /* header brand */
+        .brand {
+            background: #1e3a2f;
+            padding: 1.2rem 2rem;
+            text-align: center;
+        }
+        .brand h1 {
+            color: #f9c74f;
+            font-size: 2rem;
+            letter-spacing: 2px;
+            font-weight: 700;
+            word-break: keep-all;
+        }
+        .brand p {
+            color: #e9f5e6;
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+
+        /* language switcher */
+        .lang-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            background: #fff6ed;
+            padding: 1rem 1rem 0 1rem;
+            border-bottom: 2px solid #f0e2d0;
+            flex-wrap: wrap;
+        }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            padding: 0.6rem 1.8rem;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #5c4b3a;
+            font-family: inherit;
+        }
+        .lang-btn.active {
+            background: #f9c74f;
+            color: #1e3a2f;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .lang-btn:hover:not(.active) {
+            background: #f1e2d4;
+            color: #2b5e42;
+        }
+
+        /* content area */
+        .guidance-container {
+            padding: 2rem 2rem 2.5rem;
+        }
+        .guidance {
+            display: none;
+            animation: fadeSlide 0.3s ease-out;
+        }
+        .guidance.active {
+            display: block;
+        }
+
+        @keyframes fadeSlide {
+            0% { opacity: 0; transform: translateY(6px);}
+            100% { opacity: 1; transform: translateY(0);}
+        }
+
+        /* sections inside guidance */
+        .section {
+            background: #fefaf5;
+            border-radius: 1.5rem;
+            padding: 1.3rem 1.6rem;
+            margin-bottom: 1.8rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+            border: 1px solid #f3e9df;
+        }
+        .section h3 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2d6a4f;
+            border-left: 4px solid #f9c74f;
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+        }
+        [dir="rtl"] .section h3 {
+            border-left: none;
+            border-right: 4px solid #f9c74f;
+            padding-left: 0;
+            padding-right: 1rem;
+        }
+        .rule-list {
+            list-style: none;
+            padding-left: 0.5rem;
+        }
+        .rule-list li {
+            margin-bottom: 0.9rem;
+            display: flex;
+            align-items: baseline;
+            gap: 10px;
+            font-size: 1rem;
+            line-height: 1.45;
+            color: #2d3e40;
+        }
+        .rule-list li::before {
+            content: "•";
+            color: #f9c74f;
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+        .footer-note {
+            background: #f0f4e8;
+            border-radius: 1rem;
+            padding: 1rem 1.5rem;
+            font-size: 0.85rem;
+            text-align: center;
+            color: #3c5e4e;
+            margin-top: 1.8rem;
+            border: 1px solid #e2dccd;
+        }
+
+        hr {
+            margin: 0.5rem 0;
+            border-color: #f0e2d0;
+        }
+
+        @media (max-width: 650px) {
+            .guidance-container {
+                padding: 1.2rem;
+            }
+            .section {
+                padding: 1rem;
+            }
+            .section h3 {
+                font-size: 1.3rem;
+            }
+            .lang-btn {
+                padding: 0.4rem 1.2rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="vita-card">
+    <div class="brand">
+        <h1>VITA</h1>
+        <p>✨ پاکی و تازەیی سروشتی ✨</p>
+    </div>
+
+    <div class="lang-tabs">
+        <button class="lang-btn active" data-lang="ckb">کوردی</button>
+        <button class="lang-btn" data-lang="ar">العربية</button>
+        <button class="lang-btn" data-lang="en">English</button>
+    </div>
+
+    <div class="guidance-container">
+        <!-- کوردی (Kurdish) -->
+        <div id="ckb" class="guidance active" dir="rtl">
+            <div class="section">
+                <h3>🥤 بەکارهێنان</h3>
+                <ul class="rule-list">
+                    <li>بتڵەکە بەهەژێنە پێش خواردنەوەی</li>
+                    <li>بە ساردی بیخۆرەوە</li>
+                    <li>باشتر وایە لەپاش ٤٨ کاتژمێر لە کردنەوەی بتڵەکە بخورێتەوە</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h3>❄️ چۆنیەتی پاراستن یان هەڵگرتن</h3>
+                <ul class="rule-list">
+                    <li>لە 4°C لە ساردکەرەوە هەڵدەگیرێت (بۆ ئاو میوە و سمودی)</li>
+                    <li>دەتوانرێت بۆ ماوەی ٣ مانگ بپارێزرێت لە پلەی گەرمی خوار -18°C</li>
+                    <li>ئەگەر بتڵەکە نەکراوە بێت بۆ ماوەی هەفتەیەک لە ساردکەرەوەدا پارێزراوە</li>
+                    <li>لە بەرکەوتنی ڕاستەوخۆی تیشکی ڕۆژ بیپارێزە</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h3>📌 تێبینی گرنگ</h3>
+                <ul class="rule-list">
+                    <li>هەندێک لە خواردنەوەکان پێویستیان بە ڕێنمایی پزیشکی هەیە پێش بەکارهێنان</li>
+                    <li>هەندێک لە پێکهاتەکان دەگۆڕێت بەپێی وەرز و دەستکەوتنی سەوزە و میوەکان</li>
+                    <li>ڤێتا بەرپرس نابێت لە پیڕەوی نەکردنی ڕێنماییەکانی شێوازی پاراستن و بەکارهێنانی بەرهەمەکە</li>
+                </ul>
+            </div>
+            <div class="footer-note">
+                🌿 ڤێتا – تامێکی سروشت لە هەر کوڵێکدا
+            </div>
+        </div>
+
+        <!-- العربية (Arabic) -->
+        <div id="ar" class="guidance" dir="rtl">
+            <div class="section">
+                <h3>🥤 الاستهلاك</h3>
+                <ul class="rule-list">
+                    <li>رجّ الزجاجة جيداً قبل الشرب</li>
+                    <li>اشربي مبردة</li>
+                    <li>يُفضل الاستهلاك خلال ٤٨ ساعة بعد الفتح</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h3>❄️ التخزين</h3>
+                <ul class="rule-list">
+                    <li>يحفظ في الثلاجة عند 4°C (للعصائر والسموذي)</li>
+                    <li>يمكن تجميده عند -18°C حتى ٣ أشهر</li>
+                    <li>إذا لم يُفتح: يحفظ في الثلاجة حتى ٧ أيام</li>
+                    <li>تجنب التعرض لأشعة الشمس المباشرة</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h3>📌 ملاحظات مهمة</h3>
+                <ul class="rule-list">
+                    <li>بعض المنتجات قد تحتاج استشارة الطبيب قبل الاستخدام</li>
+                    <li>بعض المكونات قد تختلف حسب الموسم وتوافر الخضار والفواكه</li>
+                    <li>لا تتحمل فيتا أي مسؤولية عن الأضرار الناتجة عن عدم الالتزام بإرشادات التخزين والاستخدام.</li>
+                </ul>
+            </div>
+            <div class="footer-note">
+                🌿 فيتا – نضارة طبيعية في كل زجاجة
+            </div>
+        </div>
+
+        <!-- English -->
+        <div id="en" class="guidance" dir="ltr">
+            <div class="section">
+                <h3>🥤 Consumption</h3>
+                <ul class="rule-list">
+                    <li>Shake the bottle well before drinking</li>
+                    <li>Drink chilled</li>
+                    <li>Best consumed within 48 hours after opening</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h3>❄️ Storage</h3>
+                <ul class="rule-list">
+                    <li>Keep refrigerated at 4°C (for juices and smoothies)</li>
+                    <li>Can be frozen at -18°C for up to 3 months</li>
+                    <li>If unopened: store in the fridge for up to 7 days</li>
+                    <li>Avoid direct sunlight</li>
+                </ul>
+            </div>
+            <div class="section">
+                <h3>📌 Important Notes</h3>
+                <ul class="rule-list">
+                    <li>Some products may require consulting a doctor before use</li>
+                    <li>Some ingredients may vary depending on the season and availability of fruits and vegetables</li>
+                    <li>Vita shall not be held liable for any damages resulting from failure to follow storage and usage instructions.</li>
+                </ul>
+            </div>
+            <div class="footer-note">
+                🌿 Vita – Natural freshness in every bottle
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function() {
+        const buttons = document.querySelectorAll('.lang-btn');
+        const sections = {
+            ckb: document.getElementById('ckb'),
+            ar: document.getElementById('ar'),
+            en: document.getElementById('en')
+        };
+
+        function switchLanguage(lang) {
+            // hide all
+            Object.values(sections).forEach(section => {
+                if (section) section.classList.remove('active');
+            });
+            // show selected
+            if (sections[lang]) sections[lang].classList.add('active');
+            // update active button
+            buttons.forEach(btn => btn.classList.remove('active'));
+            const activeBtn = Array.from(buttons).find(btn => btn.getAttribute('data-lang') === lang);
+            if (activeBtn) activeBtn.classList.add('active');
+        }
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const lang = btn.getAttribute('data-lang');
+                switchLanguage(lang);
+            });
+        });
+
+        // default active language is Kurdish (ckb) already set
+    })();
+</script>
+</body>
+</html>
